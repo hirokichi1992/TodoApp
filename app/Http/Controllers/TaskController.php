@@ -28,7 +28,7 @@ class TaskController extends Controller
         return view('tasks.index', [
             'folders' => $folders,
             'current_folder_id' => $id,
-            'tasks' => $tasks
+            'tasks' => $tasks,
         ]);
     }
 
@@ -44,6 +44,6 @@ class TaskController extends Controller
         return redirect()->route('tasks.index', [
             'id' => $current_folder->id,
         ]);
-        
+
     }
 }
