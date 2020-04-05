@@ -9,11 +9,26 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    //
+    /**
+     * GET /folders/{id}/tasks/create
+     */
     public function showCreateForm(int $id)
     {
         return view('tasks.create', [
             'folder_id' => $id
+        ]);
+    }
+
+    /**
+     * GET /folders/{id}/tasks/{task_id}/edit
+     */
+    public function showEditForm(int $id, int $task_id)
+    {
+        // 編集画面に遷移した時には選択したタスク情報が記入されている状態にしておく
+        $task = Task::find($task_id);
+
+        return view('tasks.edit', [
+            'task' => $task,
         ]);
     }
 
