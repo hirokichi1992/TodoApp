@@ -18,10 +18,11 @@ class CreateTasksTable extends Migration
             $table->bigInteger('folder_id')->unsigned();
             $table->string('title', 100);
             $table->date('due_date');
+            // デフォルトは未着手なので"1"に設定
             $table->integer('status')->default(1);
             $table->timestamps();
 
-            // 外部キー
+            // 外部キー　実際に存在するfolder_idの値しか入れることができないようにする
             $table->foreign('folder_id')->references('id')->on('folders');
         });
     }

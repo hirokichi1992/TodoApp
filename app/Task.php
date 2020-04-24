@@ -14,31 +14,46 @@ class Task extends Model
         3 => ['label' => '完了', 'class' => '']
     ];
 
-    public function getStatusLabelAttribute(){
+    /*
+     * アクセサ定義:ラベル
+     * 取得方法：App\Task->status_label
+    */
+    public function getStatusLabelAttribute()
+    {
         //状態値
         $status = $this->attributes['status'];
 
         // 定義されていなければ空文字を返す
-        if(!isset(self::STATUS[$status])){
+        if (!isset(self::STATUS[$status])) {
             return '';
         }
 
         return self::STATUS[$status]['label'];
     }
 
-    public function getStatusClassAttribute(){
+    /*
+     * アクセサ定義:クラス（色分け）
+     * 取得方法：App\Task->status_class
+    */
+    public function getStatusClassAttribute()
+    {
         //状態値
         $status = $this->attributes['status'];
 
         // 定義されていなければ空文字を返す
-        if(!isset(self::STATUS[$status])){
+        if (!isset(self::STATUS[$status])) {
             return '';
         }
 
         return self::STATUS[$status]['class'];
     }
 
-    public function getFormattedDueDateAttribute(){
+    /*
+     * 日付フォーマット変更
+     * 取得方法：App\Task->formatted_due_date
+    */
+    public function getFormattedDueDateAttribute()
+    {
         return Carbon::createFromFormat('Y-m-d', $this->attributes['due_date'])->format('Y/m/d');
     }
 }

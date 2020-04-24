@@ -80,6 +80,7 @@ return [
     |
     */
 
+    // resources/lang/jaを最初に見に行き、なかったら'fallback_locale' => 'en'で指定した"resources/lang/en"を見に行く
     'locale' => 'ja',
 
     /*
